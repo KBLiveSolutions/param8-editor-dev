@@ -49,8 +49,9 @@
             <select id="preset-select" class="ctrl-ch" style="width:110px"></select>
             <span class="ctrl-ch-label">Name</span>
             <input type="text" id="preset-name-input" maxlength="19" placeholder="Preset 1">
+            <button id="ctrl-send" disabled>Send</button>
             <button id="ctrl-save">Save...</button>
-            <button id="ctrl-load">Load...</button>
+            <button id="ctrl-load">Import...</button>
             <input type="file" id="ctrl-load-input" accept=".json" class="hidden">
           </div>
           <div id="controls-grid" class="controls-grid"></div>
@@ -59,6 +60,12 @@
 
       <!-- Global tab -->
       <div id="panel-global" class="main-tab-panel hidden">
+        <div class="preset-toolbar">
+          <button id="global-send" disabled>Send</button>
+          <button id="global-save">Save...</button>
+          <button id="global-load">Import...</button>
+          <input type="file" id="global-load-input" accept=".json" class="hidden">
+        </div>
         <div id="mode-global"></div>
       </div>
 
@@ -93,6 +100,13 @@
               </select>
             </div>
             <div class="settings-row">
+              <span class="ctrl-ch-label">LEDs</span>
+              <select id="leds-select" class="ctrl-ch" style="width:64px">
+                <option value="0" selected>On</option>
+                <option value="1">Off</option>
+              </select>
+            </div>
+            <div class="settings-row">
               <span class="ctrl-ch-label">Screensaver</span>
               <select id="screensaver-select" class="ctrl-ch" style="width:80px">
                 <option value="0">Off</option>
@@ -107,16 +121,16 @@
             </div>
           </div>
           <div class="settings-card">
-            <span class="settings-card-title">Slew</span>
+            <span class="settings-card-title">Smooth</span>
             <div class="settings-row">
               <span class="ctrl-ch-label">Latch</span>
-              <div class="slew-ctrl" id="latch-slew-ctrl">
-                <button class="slew-mode-btn" id="latch-slew-mode">Time</button>
-                <div class="slew-time-part" id="latch-slew-time-part">
-                  <input type="range" id="latch-slew-level" min="0" max="127" value="0">
-                  <span class="slew-val" id="latch-slew-val">Off</span>
+              <div class="smooth-ctrl" id="latch-smooth-ctrl">
+                <button class="smooth-mode-btn" id="latch-smooth-mode">Time</button>
+                <div class="smooth-time-part" id="latch-smooth-time-part">
+                  <input type="range" id="latch-smooth-level" min="0" max="127" value="0">
+                  <span class="smooth-val" id="latch-smooth-val">Off</span>
                 </div>
-                <select id="latch-slew-step" class="ctrl-ch hidden" style="width:62px">
+                <select id="latch-smooth-step" class="ctrl-ch hidden" style="width:62px">
                   <option value="0">1/16</option>
                   <option value="1">1/8</option>
                   <option value="2" selected>1/4</option>
@@ -130,13 +144,13 @@
             </div>
             <div class="settings-row">
               <span class="ctrl-ch-label">Revert</span>
-              <div class="slew-ctrl" id="revert-slew-ctrl">
-                <button class="slew-mode-btn" id="revert-slew-mode">Time</button>
-                <div class="slew-time-part" id="revert-slew-time-part">
-                  <input type="range" id="revert-slew-level" min="0" max="127" value="0">
-                  <span class="slew-val" id="revert-slew-val">Off</span>
+              <div class="smooth-ctrl" id="revert-smooth-ctrl">
+                <button class="smooth-mode-btn" id="revert-smooth-mode">Time</button>
+                <div class="smooth-time-part" id="revert-smooth-time-part">
+                  <input type="range" id="revert-smooth-level" min="0" max="127" value="0">
+                  <span class="smooth-val" id="revert-smooth-val">Off</span>
                 </div>
-                <select id="revert-slew-step" class="ctrl-ch hidden" style="width:62px">
+                <select id="revert-smooth-step" class="ctrl-ch hidden" style="width:62px">
                   <option value="0">1/16</option>
                   <option value="1">1/8</option>
                   <option value="2" selected>1/4</option>
